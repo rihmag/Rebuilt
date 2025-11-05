@@ -83,6 +83,11 @@ export async function getBlogById(id) {
   return handleResponse(response);
 }
 
+export async function searchBlogs(query) {
+  const response = await fetch(`${API_BASE_URL}/api/blogs?search=${encodeURIComponent(query)}`);
+  return handleResponse(response);
+}
+
 // Main Stories API functions
 export async function getMainStories() {
   const response = await fetch(`${API_BASE_URL}/api/main-stories`);
