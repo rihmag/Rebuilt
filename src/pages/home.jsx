@@ -6,9 +6,12 @@ import CategorySections from '../components/CategorySections'
 import LatestBlogs from '../components/LatestBlogs'
 import YouMissed from '../components/YouMissed'
 import Footer from '../components/Footer'
+import usePageTracking from '../Pagevisit'
 
 const Home = () => {
+	usePageTracking("home")
 	return (
+		
 		<div>
 			<Navbar />
 			<TopStoriesCarousel />

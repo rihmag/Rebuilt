@@ -38,6 +38,18 @@ export async function createCategory(name) {
 	})
 	return handleResponse(response)
 }
+export async function  sendPageVisit  (page,timestamp,userAgent)  {
+    try {
+		const response = await fetch(`${API_BASE_URL}/api/analytics/visit`, {
+		page,
+		timestamp,
+		userAgent,
+	})
+	 return handleResponse(response)
+      } catch (error) {
+        console.error('Error tracking page visit:', error);
+      }
+    };
 
 export async function deleteCategory(id) {
 	const response = await fetch(`${API_BASE_URL}/api/categories/${id}`, {
@@ -158,6 +170,17 @@ export async function createNewsCarousel(formData) {
 export async function deleteNewsCarousel(id) {
 	const response = await fetch(`${API_BASE_URL}/api/news-carousel/${id}`, {
 		method: 'DELETE',
+	})
+	return handleResponse(response)
+}
+
+export async function login(email, password) {
+	const response = await fetch(`${API_BASE_URL}/api/auth/login`, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify({ email, password}),
 	})
 	return handleResponse(response)
 }
